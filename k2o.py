@@ -23,8 +23,8 @@ def main(keep_dir, org_file):
         with open(file) as f:
             contents = json.load(f)
             notes.append(contents)
-    # Sort by edition time desc
-    notes = sorted(notes, key=lambda x: -x["userEditedTimestampUsec"])
+    # Sort by edition time asc
+    notes = sorted(notes, key=lambda x: x["userEditedTimestampUsec"])
     org_contents = "\n".join(map(generate_headline, notes))
     with open(org_file, "w") as f:
         f.write(org_contents)
